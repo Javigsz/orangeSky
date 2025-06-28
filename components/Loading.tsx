@@ -10,8 +10,8 @@ export default function Loading() {
   const loadingScreenOpen = useSelector((state: RootState) => state.loading.loadingScreenOpen)
 
   return (
-    <div className={`${loadingScreenOpen ? "opacity-100 z-50" : "opacity-0 -z-50"} h-screen fixed top-0 left-0 bottom-0 right-0 
-      bg-white z-50 flex items-center justify-center transition`}
+    <div className={`${loadingScreenOpen ? "opacity-100 z-50" : "opacity-0 -z-50"} fixed top-0 left-0 bottom-0 right-0 
+      bg-white flex items-center justify-center transition`}
     >
       <div className="flex flex-col items-center">
         <Image src="/logo.jpg" width={120} height={120} alt="Logo" className="mb-10" />

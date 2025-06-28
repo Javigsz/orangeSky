@@ -58,6 +58,7 @@ export default function PostInput( { insideModal }: PostInputProps ) {
         width={44} height={44} 
         alt={insideModal ? 'Profile Picture' : 'Logo'} 
         className="w-12 h-12 z-10" 
+        unoptimized={true}
       />
       <div className="w-full">
         <textarea 

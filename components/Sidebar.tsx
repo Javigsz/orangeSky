@@ -16,7 +16,7 @@ export default function Sidebar() {
     <nav className="h-screen hidden sm:flex flex-col sticky top-0 p-3 xl:ml-20 xl:mr-10">
       <div className="relative h-full flex flex-col">
         <div className="py-3">
-          <Image src={'/logo.jpg'} width={48} height={48} alt="Logo" />
+          <Image src={'/logo.jpg'} width={48} height={48} alt="Logo" unoptimized={true} className="w-12 h-12 z-10" />
         </div>
         <ul>
           <SidebarLink text="Home" Icon={HomeIcon} />
