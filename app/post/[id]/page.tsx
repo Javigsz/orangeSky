@@ -1,12 +1,10 @@
-import Sidebar from "@/components/Sidebar";
-import WidgetTab from "@/components/WidgetTab";
-import SignUpPrompt from "@/components/SignUpPrompt";
 import { PostHeader } from "@/components/Post";
 import { ArrowLeftIcon, ArrowUpTrayIcon, ChartBarIcon, ChatBubbleLeftEllipsisIcon, EllipsisHorizontalIcon, HeartIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase"
+import { notFound } from "next/navigation";
 
 // interface PostData {
 //   name?: string;
@@ -38,12 +36,15 @@ export default async function page({ params }: PageProps) {
   const { id } = params
   const post = await fetchPost(id)
 
+  if(!post){
+    notFound()
+  }
+
   return (
     <>
-      <div className="flex text-[#0F1419] min-h-screen max-w-[1400px] mx-auto 
+      <div className="flex flex-grow text-[#0F1419] min-h-screen max-w-[1400px] mx-auto 
         justify-center"
       >
-        <Sidebar />
           <div className="flex-grow max-w-2xl border-x border-gray-200">
             <div className="py-4 px-3 text-lg sm:text-xl sticky 
               top-0 z-50 bg-white bg-opacity-80 backdrop-blur-sm font-bold border-b border-gray-200
@@ -103,9 +104,7 @@ export default async function page({ params }: PageProps) {
             )
             }
           </div>
-        <WidgetTab />
       </div>
-      <SignUpPrompt />
     </>
   )
 }

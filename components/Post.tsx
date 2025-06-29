@@ -43,7 +43,7 @@ export default function Post( { data, id }: PostProps ) {
 
   return (
     <div className="border-b border-gray-200">
-      <Link href={'/' + id}>
+      <Link href={'/post/' + id}>
         <PostHeader 
           username={data.username} 
           name={data.name} 
