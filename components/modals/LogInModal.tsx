@@ -18,6 +18,7 @@ export default function LogInModal() {
   const dispatch: AppDispatch = useDispatch()
 
   const handleLogIn = async () => {
+    if(!email || !password) return
     await signInWithEmailAndPassword(auth, email, password)
   }
 
@@ -32,7 +33,7 @@ export default function LogInModal() {
   return (
     <div>
        <button
-          className="w-full h-[48px] md:w-[88px] md:h-[40px] md:text-sm text-md border 
+          className="w-full px-4 md:p-0 h-[48px] md:w-[88px] md:h-[40px] md:text-sm text-md border 
           border-gray-100 rounded-full text-white font-bold hover:bg-white hover:bg-opacity-25
           transition"
           onClick={() => dispatch(openLogInModal())}

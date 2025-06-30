@@ -4,6 +4,7 @@ const initialState = {
   signUpModalOpen: false,
   logInModalOpen: false,
   commentModalOpen: false,
+  editProfileModalOpen: false,
   commentPostDetails: {
     name: "",
     username: "",
@@ -40,6 +41,12 @@ const modalSlice = createSlice({
     closeCommentModal: (state) => {
       state.commentModalOpen = false
     },
+    openEditProfileModal: (state) => {
+      state.editProfileModalOpen = true
+    },
+    closeEditProfileModal: (state) => {
+      state.editProfileModalOpen = false
+    },
     setCommentDetails: (state, action) => {
       state.commentPostDetails.name = action.payload.name
       state.commentPostDetails.username = action.payload.username
@@ -49,6 +56,7 @@ const modalSlice = createSlice({
   }
 })
 export const { openSignUpModal, closeSignUpModal, openLogInModal, closeLogInModal,
-  openCommentModal, closeCommentModal, toggleSignUpModal, toggleLogInModal, setCommentDetails } = modalSlice.actions
+  openCommentModal, closeCommentModal, toggleSignUpModal, toggleLogInModal, setCommentDetails,
+  openEditProfileModal, closeEditProfileModal } = modalSlice.actions
 
 export default modalSlice.reducer

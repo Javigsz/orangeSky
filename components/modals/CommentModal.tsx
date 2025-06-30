@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PostHeader } from '../Post'
 import PostInput from '../PostInput'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { comment } from 'postcss'
 
 export default function CommentModal() {
 
@@ -19,8 +18,8 @@ export default function CommentModal() {
   return (
     <>
       <Modal
-        open={open} // Replace with your state management logic
-        onClose={() => dispatch(closeCommentModal())} // Replace with your close handler
+        open={open} 
+        onClose={() => dispatch(closeCommentModal())} 
         className="flex justify-center items-center"
       >
         <div 

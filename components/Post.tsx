@@ -129,7 +129,7 @@ interface PostHeaderProprs {
 export function PostHeader( {username, name, timestamp, text, reply }: PostHeaderProprs) {
   return (
     <div className="flex p-3 space-x-5">
-      <Image src='/profile-pic.jpg' width={44} height={44} alt="Profile picture" className="w-12 h-12 z-10" />
+      <Image src='/profile-pic.jpg' width={44} height={44} alt="Profile picture" className="w-12 h-12" />
       <div className="text-[15px] flex flex-col space-y-1.5">
         <div className="flex space-x-1.5 text-gray-400">
           <span className="font-bold text-[#0F1419] whitespace-nowrap 
