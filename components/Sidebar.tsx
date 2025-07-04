@@ -40,7 +40,11 @@ export default function Sidebar() {
             Icon={BellIcon}
             path={"/notifications"}
           />
-          <SidebarLink text="Messages" Icon={InboxIcon} path={"/messages"} />
+          <SidebarLink
+            text="Messages"
+            Icon={InboxIcon}
+            path={"/messages/" + user.uid}
+          />
           <SidebarLink
             text="Bookmarks"
             Icon={BookmarkIcon}
