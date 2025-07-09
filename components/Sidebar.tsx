@@ -44,11 +44,13 @@ export default function Sidebar() {
             text="Messages"
             Icon={InboxIcon}
             path={"/messages/" + user.uid}
+            loggedIn={true}
           />
           <SidebarLink
             text="Bookmarks"
             Icon={BookmarkIcon}
             path={"/bookmarks"}
+            loggedIn={true}
           />
           <SidebarLink
             text="Profile"

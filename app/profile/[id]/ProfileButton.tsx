@@ -24,11 +24,16 @@ async function isFollowing(currentUserId: string, profileUserId: string) {
   );
 }
 
-export default function ProfileButton() {
+interface ProfileButtonProps {
+  miniProfileId?: string;
+}
+
+export default function ProfileButton({ miniProfileId }: ProfileButtonProps) {
   const user = useSelector((state: RootState) => state.user);
   const pathname = usePathname();
   const dispatch = useDispatch();
   const [following, setFollowing] = useState<boolean>(false);
+  const route = pathname.split("/")[1];
   const profileUserId = pathname.split("/")[2];
   const [hovered, setHovered] = useState(false);
 
@@ -60,34 +65,68 @@ export default function ProfileButton() {
 
   return (
     <>
-      {user.uid === pathname.split("/")[2] ? (
+      {route === "profile" && profileUserId === user.uid && (
         <button
           className="rounded-full w-[100px]
-          text-button text-sm border-2 border-button hover:shadow-md p-2 px-4 z-10 transition"
+        text-button text-sm border-2 border-button hover:shadow-md p-2 px-4 h-12 z-10 transition"
           onClick={() => dispatch(openEditProfileModal())}
         >
           Edit
         </button>
-      ) : following ? (
+      )}
+      {route === "profile" &&
+        user.uid !== profileUserId &&
+        (following ? (
+          <button
+            className="rounded-full w-[100px]
+              text-white bg-button hover:bg-red-500 hover:border-red-500 text-sm border-2 h-12
+              border-button hover:shadow-md p-2 px-4 z-10 transition"
+            onClick={handleUnfollow}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            {hovered ? "Unfollow" : "Following"}
+          </button>
+        ) : (
+          <button
+            className="rounded-full w-[100px]
+            text-button text-sm border-2 border-button hover:shadow-md h-12 p-2 px-4 z-10 transition"
+            onClick={handleFollow}
+          >
+            Follow
+          </button>
+        ))}
+      {route === "followers" && miniProfileId === user.uid && (
         <button
           className="rounded-full w-[100px]
-            text-white bg-button hover:bg-red-500 hover:border-red-500 text-sm border-2 
-            border-button hover:shadow-md p-2 px-4 z-10 transition"
-          onClick={handleUnfollow}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+          text-button text-sm border-2 border-button hover:shadow-md p-2 px-4 h-12 z-10 transition"
+          onClick={() => dispatch(openEditProfileModal())}
         >
-          {hovered ? "Unfollow" : "Following"}
-        </button>
-      ) : (
-        <button
-          className="rounded-full w-[100px]
-          text-button text-sm border-2 border-button hover:shadow-md p-2 px-4 z-10 transition"
-          onClick={handleFollow}
-        >
-          Follow
+          Edit
         </button>
       )}
+      {route === "followers" &&
+        miniProfileId !== user.uid &&
+        (!following ? (
+          <button
+            className="rounded-full w-[100px]
+            text-white bg-button hover:bg-red-500 hover:border-red-500 text-sm border-2 h-12
+            border-button hover:shadow-md p-2 px-4 z-10 transition"
+            onClick={handleUnfollow}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            {hovered ? "Unfollow" : "Following"}
+          </button>
+        ) : (
+          <button
+            className="rounded-full w-[100px]
+          text-button text-sm border-2 border-button hover:shadow-md h-12 p-2 px-4 z-10 transition"
+            onClick={handleFollow}
+          >
+            Follow
+          </button>
+        ))}
     </>
   );
 }

@@ -1,9 +1,4 @@
-"use client";
-
-import Post from "@/components/Post";
 import PostFeed from "@/components/PostFeed";
-import { db } from "@/firebase";
-import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import React from "react";
 
 export default async function userProfileLikes({

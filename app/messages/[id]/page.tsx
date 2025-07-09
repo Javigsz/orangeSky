@@ -21,7 +21,7 @@ export default function Messages({ params }: { params: { id: string } }) {
           <EnvelopeIcon className="w-8 h-8" />
         </button>
       </Link>
-      <div className="border-t border-gray-200">lista</div>
+      <div className="border-t border-gray-200"></div>
     </div>
   );
 }

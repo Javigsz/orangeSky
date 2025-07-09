@@ -62,7 +62,7 @@ export default function MiniProfile({
       </div>
       <div className="mr-4 space-x-3">
         {canMessage && (
-          <button className="text-button border-button border-2 hover:text-white hover:bg-button transition rounded-full p-2">
+          <button className="text-button border-button border-2 hover:text-white hover:bg-button transition rounded-full p-2 h-12">
             Message
           </button>
         )}
